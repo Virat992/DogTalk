@@ -8,8 +8,8 @@ import 'package:whatsapp_ui/features/chat/controller/chat_controller.dart';
 import 'package:whatsapp_ui/info.dart';
 import 'package:whatsapp_ui/models/message.dart';
 import 'package:whatsapp_ui/models/message.dart';
-import 'package:whatsapp_ui/widgets/my_message_card.dart';
-import 'package:whatsapp_ui/widgets/sender_message_card.dart';
+import 'package:whatsapp_ui/common/widgets/my_message_card.dart';
+import 'package:whatsapp_ui/common/widgets/sender_message_card.dart';
 
 class ChatList extends ConsumerStatefulWidget {
   final String receiverUserId;
@@ -56,11 +56,13 @@ class _ChatListState extends ConsumerState<ChatList> {
                 return MyMessageCard(
                   message: messsageData.text,
                   date: timeSent,
+                  type: messsageData.type,
                 );
               }
               return SenderMessageCard(
                 message: messsageData.text,
                 date: timeSent,
+                type: messsageData.type,
               );
             },
           );

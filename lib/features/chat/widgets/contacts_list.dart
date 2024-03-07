@@ -21,6 +21,14 @@ class ContactsList extends ConsumerWidget {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Loader();
             }
+            final data = snapshot.data;
+            if (data == null || data.isEmpty) {
+              // Handle case when data is null or empty
+              return Container(
+                alignment: Alignment.center,
+                child: Text('There are currently no chats avilable'),
+              ); // or any other fallback widget
+            }
             return ListView.builder(
               shrinkWrap: true,
               itemCount: snapshot.data!.length,
